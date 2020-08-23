@@ -95,8 +95,9 @@ let appData = {
       item.querySelector(".expenses-amount").value = "";
     });
     expensesItems[0].before(cloneExpensesItem);
-
     expensesItems = document.querySelectorAll(".expenses-items");
+    inLetter();
+    inNumber();
     if (expensesItems.length === 3) {
       expensesPlus.style.display = "none";
     }
@@ -118,6 +119,8 @@ let appData = {
     });
     incomeItems[0].before(cloneIncomeItem);
     incomeItems = document.querySelectorAll(".income-items");
+    inLetter();
+    inNumber();
     if (incomeItems.length === 3) {
       incomePlus.style.display = "none";
     }
@@ -191,21 +194,25 @@ let appData = {
   },
 };
 start.disabled = true;
-console.log(document.querySelectorAll('[placeholder="Наименование"]'));
+//console.log(document.querySelectorAll('[placeholder="Наименование"]'));
 //ввод только цифр
-document.querySelectorAll('[placeholder="Сумма"]').forEach(function (item) {
-  item.addEventListener("keyup", function () {
-    this.value = this.value.replace(/[^\d]/g, "");
-  });
-});
-//ввод только букв
-document
-  .querySelectorAll('[placeholder="Наименование"]')
-  .forEach(function (item) {
+function inNumber() {
+  document.querySelectorAll('[placeholder="Сумма"]').forEach(function (item) {
     item.addEventListener("keyup", function () {
-      this.value = this.value.replace(/[^а-яА-ЯЁё ,.?!]+$/g, "");
+      this.value = this.value.replace(/[^\d]/g, "");
     });
   });
+}
+//ввод только букв
+function inLetter() {
+  document
+    .querySelectorAll('[placeholder="Наименование"]')
+    .forEach(function (item) {
+      item.addEventListener("keyup", function () {
+        this.value = this.value.replace(/[^а-яА-ЯЁё ,.?!]+$/g, "");
+      });
+    });
+}
 
 salaryAmount.oninput = function () {
   if (salaryAmount.value !== "") {
@@ -214,7 +221,8 @@ salaryAmount.oninput = function () {
     start.disabled = true;
   }
 };
-
+inLetter();
+inNumber();
 start.addEventListener("click", appData.start);
 expensesPlus.addEventListener("click", appData.addExpensesBlock);
 incomePlus.addEventListener("click", appData.addIncomeBlock);
