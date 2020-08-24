@@ -213,6 +213,12 @@ function inLetter() {
       });
     });
 }
+//возможные расходы ввод только русских букв, пробелов, знаков препинания
+document
+  .querySelector('[placeholder="название"]')
+  .addEventListener("keyup", function () {
+    this.value = this.value.replace(/[^а-яА-ЯЁё ,.?!]+$/g, "");
+  });
 
 salaryAmount.oninput = function () {
   if (salaryAmount.value !== "") {
