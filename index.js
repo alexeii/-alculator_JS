@@ -77,7 +77,6 @@ AppData.prototype.start = function () {
   this.getBudget();
 
   this.showResult();
-
 };
 AppData.prototype.reset = function () {
   document.querySelectorAll("input").forEach(function (item) {
@@ -96,8 +95,7 @@ AppData.prototype.reset = function () {
   this.deposit = false;
   this.percentDeposit = 0;
   this.moneyDeposit = 0;
-
-
+  periodSelect.value = 1;
 };
 AppData.prototype.showResult = function () {
   const _this = this;
@@ -258,7 +256,6 @@ AppData.prototype.getTargetMonth = function () {
 AppData.prototype.calcPeriod = function () {
   return this.budgetMonth * periodSelect.value;
 };
-
 
 AppData.prototype.eventsListeners = function () {
   start.disabled = true;
