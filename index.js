@@ -8,7 +8,7 @@ let isNumber = function (n) {
 
 let start = document.getElementById("start");
 let btnCancel = document.querySelector("#cancel");
-console.log(btnCancel);
+
 //Кнопки “+” (плюс) через Tag, каждую в своей переменной
 
 let incomePlus = document.getElementsByTagName("button")[0];
@@ -77,7 +77,6 @@ let appData = {
     this.getBudget();
 
     this.showResult();
-    console.log(this);
   },
   reset: function () {
     document.querySelectorAll("input").forEach(function (item) {
@@ -96,8 +95,7 @@ let appData = {
     this.deposit = false;
     this.percentDeposit = 0;
     this.moneyDeposit = 0;
-
-    console.log(this);
+    periodSelect.value = 1;
   },
   showResult: function () {
     budgetMonthValue.value = this.budgetMonth;
